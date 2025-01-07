@@ -18,12 +18,11 @@ $amount = 5000; // Amount to be charged
 $_SESSION['tx_ref'] = $tx_ref;
 $_SESSION['amount'] = $amount;
 
-// Configuration values - consider moving these to .env as well
-$currency = 'NGN';
-$email = $_ENV['DEFAULT_EMAIL'] ?? "abakpadavid2003@gmail.com";  // Could be moved to .env
-$phone_number = $_ENV['DEFAULT_PHONE'] ?? "091327307993";        // Could be moved to .env
-$redirect_url = $_ENV['PAYMENT_REDIRECT_URL'] ?? 
-'https://yourwebsite.com/payment-confirmation.php';
+// Get configuration values from .env
+$currency = $_ENV['CURRENCY'];
+$email = $_ENV['DEFAULT_EMAIL'];
+$phone_number = $_ENV['DEFAULT_PHONE'];
+$redirect_url = $_ENV['PAYMENT_REDIRECT_URL'];
 
 // Prepare the payment request
 $data = [
