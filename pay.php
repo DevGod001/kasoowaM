@@ -1,9 +1,14 @@
 <?php
-session_start(); // Start the session
+session_start();
 
-// Configuration
-$public_key = 'FLWPUBK_TEST-4e0e7f3fe8e45c5229661e1e5ebc565a-X';
-$secret_key = 'FLWSECK_TEST-fb39fd889e6cba4b06a92c88905d5377-X';
+// Load environment variables
+require __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Configuration - get keys from environment variables
+$public_key = $_ENV['FLUTTERWAVE_PUBLIC_KEY'];
+$secret_key = $_ENV['FLUTTERWAVE_SECRET_KEY'];
 
 // Generate a unique transaction reference
 $tx_ref = 'txn_' . uniqid();
@@ -13,16 +18,19 @@ $amount = 5000; // Amount to be charged
 $_SESSION['tx_ref'] = $tx_ref;
 $_SESSION['amount'] = $amount;
 
+// Configuration values - consider moving these to .env as well
 $currency = 'NGN';
-$email = "abakpadavid2003@gmail.com";
-$phone_number = "091327307993";
+$email = $_ENV['DEFAULT_EMAIL'] ?? "abakpadavid2003@gmail.com";  // Could be moved to .env
+$phone_number = $_ENV['DEFAULT_PHONE'] ?? "091327307993";        // Could be moved to .env
+$redirect_url = $_ENV['PAYMENT_REDIRECT_URL'] ?? 
+'https://yourwebsite.com/payment-confirmation.php';
 
 // Prepare the payment request
 $data = [
     'tx_ref' => $tx_ref,
     'amount' => $amount,
     'currency' => $currency,
-    'redirect_url' => 'https://yourwebsite.com/payment-confirmation.php', // Redirect URL after payment
+    'redirect_url' => $redirect_url,
     'customer' => [
         'email' => $email,
         'phonenumber' => $phone_number,
@@ -30,8 +38,8 @@ $data = [
     ]
 ];
 
+// Initialize cURL request
 $ch = curl_init('https://api.flutterwave.com/v3/payments');
-
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
@@ -40,8 +48,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json'
 ]);
 
+// Execute the request
 $response = curl_exec($ch);
 
+// Handle errors
 if ($response === false) {
     echo 'Curl error: ' . curl_error($ch);
     curl_close($ch);
