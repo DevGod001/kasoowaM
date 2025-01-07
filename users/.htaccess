@@ -1,0 +1,39 @@
+# Disable directory listing
+Options -Indexes
+# Enable URL rewriting
+RewriteEngine on
+# Rewrite rules for friendly URLs
+RewriteRule ^register$ register.php [L]
+RewriteRule ^login$ login.php [L]
+RewriteRule ^reset$ reset.php [L]
+RewriteRule ^verify$ reset_password.php [L]
+RewriteRule ^feature$ feature.php [L]
+RewriteRule ^complete$ complete.php [L]
+RewriteRule ^home$ home.php [L]
+RewriteRule ^$ login.php [L]
+RewriteRule ^mail$ verify.php [L]
+RewriteRule ^advertise$ advertise.php [L]
+RewriteRule ^products$ products.php [L]
+RewriteRule ^sell$ post.php [L]
+RewriteRule ^history$ history.php [L]
+RewriteRule ^product_details$ product_details.php [L]
+RewriteRule ^app$ app.php [L]
+RewriteRule ^cart$ cart.php [L]
+RewriteRule  ^orders$ orders.php [L]
+RewriteRule ^account$ account.php [L]
+RewriteRule ^logout$ logout.php [L]
+RewriteRule ^profile$ profile.php [L]
+RewriteRule ^terms$ terms.php [L]
+RewriteRule ^store$ my_store.php [L]
+RewriteRule ^track$ track.php [L]
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/kasopwit/users"
+PassengerBaseURI "/users"
+PassengerNodejs "/home/kasopwit/nodevenv/users/10/bin/node"
+PassengerAppType node
+PassengerStartupFile users
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END

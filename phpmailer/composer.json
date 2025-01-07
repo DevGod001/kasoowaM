@@ -1,0 +1,15 @@
+{
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/paypal/Checkout-PHP-SDK"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9",
+        "paypal/paypal-server-sdk": "^0.6.0",
+        "paypal/checkout-sdk-php": "^1.0"
+    }
+}

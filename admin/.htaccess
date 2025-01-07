@@ -1,0 +1,4 @@
+RewriteEngine on;
+RewriteRule ^login$ login.php [L];
+RewriteRule ^categories$ categories.php [L];
+RewriteRule ^discount$ discount.php [L];

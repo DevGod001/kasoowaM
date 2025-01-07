@@ -1,0 +1,124 @@
+.section3{
+            min-height:auto;
+            width:100vw;
+            background:white;
+            margin-top:10vh;
+            padding:10px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
+        .track_section{
+            font-family:poppins;
+            width:100%;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            border-radius:5px;
+            box-shadow:0px 4px 8px rgba(0,0,0,0.2);
+            padding:50px 10px;
+            background:linear-gradient(to top right,white,whitesmoke,rgba(144,255,144,0.5));
+            
+        }
+        .desc{
+            font-size:1.5rem;
+        }
+        .progress_parent{
+            height:20px;
+            width:100%;
+            background:silver;
+            border-radius:200px;
+            overflow:hidden;
+            color:white;
+            font-size:80%;
+            text-align:center;
+        }
+        .progress_child{
+            height:100%;
+            width:70%;
+            background:#4caf50;
+        }
+        .track_group{
+            width:100%;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:20px;
+        }
+        .bar_section{
+            width:100%;
+            padding:0 30px;
+        }
+        .bar_line{
+            height:500px;
+            width:5px;
+            background:silver;
+            position:relative;
+        }
+        .ball{
+            height:20px;
+            width:20px;
+            border-radius:50%;
+            border:2px solid white;
+            background:#4caf50;
+            position:absolute;
+            left:50%;
+            top:0%;
+            transform:translateX(-50%);
+        }
+        .ball_det{
+            position:absolute;
+            left:200%;
+            top:0;
+            width:fit-content;
+        }
+        .bar_child{
+            height:75%;
+            width:100%;
+            background:#4caf50;
+        }
+        .track_group:nth-of-type(2n){
+            
+            height:100%;
+            width:100%;
+            
+        }
+        nav,header{
+            z-index:6000;
+        }
+        hr{
+            width:100%;
+            border:none;
+            height:0.1px;
+            background:silver;
+        }
+        .summary_section{
+            margin-top:100px;
+            width:100%;
+        }
+        .order_details{
+            width:100%;
+            padding:10px;
+            
+        }
+        .order_ul{
+            list-style-type:none;
+            padding:0;
+            color:#708090;
+            font-size:0.9rem;
+        }
+        @media(min-width:800px){
+            .section3{
+                width:calc(100% - 350px);
+                margin-left:350px;
+            }
+            .track_section{
+                display:grid;
+                grid-template-columns:1fr 1fr;
+            }
+             .summary_section{
+            margin-top:50px;
+            margin-left:50px;
+            width:calc(100% - 50px);
+        }
+        }
