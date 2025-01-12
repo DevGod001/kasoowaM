@@ -28,6 +28,10 @@ $create_discount="CREATE TABLE IF NOT EXISTS `discount`(`id` INT PRIMARY KEY AUT
 $discount_created=mysqli_query($conn,$create_discount);
 $create_orders="CREATE TABLE IF NOT EXISTS `orders`(`id` INT PRIMARY KEY AUTO_INCREMENT,`uniqid` VARCHAR(255),`photo` VARCHAR(255),`product` VARCHAR(255),`product_id` VARCHAR(255),`user_id` Int,`currency` VARCHAR(255),`cost` BIGINT,`quantity` INT,`status` VARCHAR(255),`delivery_option` VARCHAR(255),`delivery_fee` BIGINT,`store_id` VARCHAR(255),`date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,`out_for_delivery` TIMESTAMP NULL,`delivered` TIMESTAMP NULL)";
 $orders_created=mysqli_query($conn,$create_orders);
+$create_dispute="CREATE TABLE IF NOT EXISTS `dispute`(`id` INT PRIMARY KEY AUTO_INCREMENT,`uniqid` VARCHAR(255),`order_id` VARCHAR(255),`dispute_reason` VARCHAR(255),`custom` VARCHAR(255),`details` TEXT,`user_id` INT,`attachment` VARCHAR(255),`date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+$dispute_created=mysqli_query($conn,$create_dispute);
+$create_inbox="CREATE TABLE IF NOT EXISTS `inbox`(`id` INT PRIMARY KEY AUTO_INCREMENT,`sender` INT,`receiver` INT,`dispute_id` VARCHAR(255),`uniqid` VARCHAR(255),`subject` VARCHAR(255),`message` TEXT,`photo` VARCHAR(255),`status` VARCHAR(255),`typing` TIMESTAMP,`date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+$inbox_created=mysqli_query($conn,$create_inbox);
 
 if($discount_created){
     echo "SUCCESS";

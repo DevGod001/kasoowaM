@@ -374,7 +374,7 @@ text-align:center;
    </div>
    <div class="button_div">
 <button onclick="window.location.href=\'track?oid='.$fetch['id'].'\'" style="background:linear-gradient(to top,green,lightgreen);color:white;box-shadow:0px 0px 8x rgba(0,0,0,0.1)" class="track_button">Track order</button>
-<button style="background:linear-gradient(to top,red,lightcoral)">Lodge dispute</button>
+<button onclick="window.location.href=\'dispute?oid='.$fetch['id'].'\'" style="background:linear-gradient(to top,red,lightcoral)">Lodge dispute</button>
    </div>
 </section>
 ';

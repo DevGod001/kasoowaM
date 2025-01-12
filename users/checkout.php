@@ -1,9 +1,13 @@
 <?php
+
 error_reporting(E_ALL);
 ini_set("display_errors",1);
 session_start();
 include_once 'connect.php';
 include_once 'haversine.php';
+include_once 'vendor/autoload.php';
+$dotenv=Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv -> load();
 
 // User ID and Cart ID from Cookies
 $user_id = $_COOKIE['user_id'];
@@ -53,7 +57,10 @@ if (mysqli_num_rows($selected) > 0) {
 }
 
 // generating proces url
-$url = "https://" . $_SERVER['HTTP_HOST'] . "/users/checkout_process.php";
+$current_file=basename($_SERVER['PHP_SELF']);
+$url=$_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+$url=str_replace($current_file,"checkout_process.php",$url);
+   
 
 $fee=mile_fees($fetch['country']);
    $data=json_decode($fee,true);
@@ -88,9 +95,11 @@ $fee=mile_fees($fetch['country']);
    }
   if(isset($_SESSION['option'])){
       $option=$_SESSION['option'];
+      echo $option;
   }
   
     $address = $address;
+    
      $delivery_option=$option;
    
     $_SESSION['address'] = $address;
@@ -141,8 +150,9 @@ if (mysqli_num_rows($selected) > 0) {
    
 }
 
-
-    $url = "https://" . $_SERVER['HTTP_HOST'] . "/users/checkout_process.php";
+$current_file=basename($_SERVER['PHP_SELF']);
+$url=$_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+$url=str_replace($current_file,"checkout_process.php",$url);
    
 
 if(str_contains($delivery_option,"doorstep")){
@@ -173,8 +183,8 @@ unset($_SESSION['option']);
 
 <?php
 // Flutterwave API Credentials
-$public_key = 'FLWPUBK_TEST-4e0e7f3fe8e45c5229661e1e5ebc565a-X';
-$secret_key = 'FLWSECK_TEST-fb39fd889e6cba4b06a92c88905d5377-X';
+$public_key = $_ENV['FLWV_PUBLIC'];
+$secret_key = $_ENV['FLWV_SECRET'];
 
 // Generate Unique Transaction Reference
 $tx_ref = 'txn_' . uniqid();

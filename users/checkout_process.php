@@ -5,7 +5,11 @@ ini_set("display_errors",1);
 
 include_once 'connect.php';
 include_once 'haversine.php';
-$secret_key = 'FLWSECK_TEST-fb39fd889e6cba4b06a92c88905d5377-X';
+include_once 'vendor/autoload.php';
+$dotenv=Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv -> load();
+$secret_key = $_ENV['FLWV_SECRET'];
+
 $amount = $_SESSION['amount'] ?? null;
 $currency = $_SESSION['currency'] ?? null;
 $user_id = $_COOKIE['user_id'];

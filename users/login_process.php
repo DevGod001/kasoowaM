@@ -144,6 +144,7 @@ $inserted=mysqli_query($conn,$insert);
   else{
       setcookie("account_type",$type,time()+86400);
       setcookie("home_account_type",$type,time()+86400);
+      
   header('Location:/');
 exit;
 }

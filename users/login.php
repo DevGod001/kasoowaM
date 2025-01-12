@@ -5,8 +5,8 @@ $url=$_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'];
 $image=$url."/assets/kasoowa.png";
 
 if(isset($_COOKIE['user_id']) && isset($_COOKIE['home_user_id']) && isset($_COOKIE['account_type'])){
-    header('Location:/'); 
-    exit;
+  //  header('Location:/'); 
+  //  exit;
 }
 
 

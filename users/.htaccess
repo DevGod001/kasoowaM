@@ -26,14 +26,5 @@ RewriteRule ^profile$ profile.php [L]
 RewriteRule ^terms$ terms.php [L]
 RewriteRule ^store$ my_store.php [L]
 RewriteRule ^track$ track.php [L]
-# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
-PassengerAppRoot "/home/kasopwit/users"
-PassengerBaseURI "/users"
-PassengerNodejs "/home/kasopwit/nodevenv/users/10/bin/node"
-PassengerAppType node
-PassengerStartupFile users
-# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
-# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
-<IfModule Litespeed>
-</IfModule>
-# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
+RewriteRule ^dispute$ dispute.php [L]
+RewriteRule ^inbox$ inbox.php [L]

@@ -1,0 +1,143 @@
+.section3{
+    margin-top:10vh;
+    background:whitesmoke;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:30px;
+
+}
+.dispute_head{
+    min-height:100px;
+    width:100%;
+    background:linear-gradient(to top right,#4caf50,lightgreen);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-size:1.5rem;
+    color:white;
+    font-family:sora;
+
+}
+.dispute_section{
+    min-height:auto;
+    width:90%;
+    background:white;
+    box-shadow:0px 4px 8px rgba(0,0,0,0.2);
+    border-radius:5px;
+    padding:20px;
+    background:linear-gradient(to top right,white,whitesmoke,rgba(0,255,0,0.2))
+}
+form{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+
+}
+*{
+    outline:none;
+}
+.cont{
+    width:100%;
+    height:40px;
+    border:1px solid silver;
+    position:relative;
+    background:white;
+    border-radius:5px;
+
+
+}
+header,nav{
+    z-index:2400;
+}
+.cont_input{
+    width:95%;
+    height:95%;
+    border:none;background:inherit;
+    border-radius:5px;
+    font-family:poppins;
+}
+.float{
+    position:absolute;
+    top:25%;
+    left:5%;
+    color:#708090;
+    transition:all 0.5s ease;
+    background:white;
+    padding:0 4px;
+    pointer-events:none;
+
+}
+.cont_input:focus + .float,.cont_input:not(:placeholder-shown) + .float{
+
+top:-25%;
+font-size:0.7rem;
+color:#4caf50;
+
+}
+textarea{
+    height:200px;
+    width:100%;
+    border:0.1px solid silver;
+    border-radius:5px;
+    font-family:poppins;
+    resize:none;
+}
+.submit_dispute{
+    width:fit-content;
+    margin-right:auto;
+    border-radius:0px;
+    font-family:poppins;
+    padding:0 30px;
+    background:linear-gradient(to right,#4caf50,lightgreen);
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+.attachment{
+   width:70px;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    position:relative;
+    background:#4caf50;
+}
+.attach_span{
+position:absolute;
+bottom:100%;
+color:#708090;
+font-size:0.6rem;
+white-space:nowrap;
+}
+.photo_section{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    place-items:center;
+}
+.preview{
+    background-size:cover;
+    background-position:center;
+    height:70px;
+    width:70px;
+}
+@media(min-width:800px){
+.section3{
+    width:calc(100% - 300px);
+    margin-left:300px;
+}
+.dispute_section{
+    width:70%;
+    padding:20px;
+}
+.preview,.attachment{
+    height:140px;
+    width:140px;
+}
+}

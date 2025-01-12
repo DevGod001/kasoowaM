@@ -167,7 +167,7 @@ text-align:center;
         </div>
     </section>
    <header>
-      <a href="/"><div class="logo" ></div></a>
+      <a href="/"><div class="logo" style="background-image:url('kasoowa.png')"></div></a>
       <?php
         if(isset($_COOKIE['cart_id'])){
         $uniqid=$_COOKIE['cart_id'];
